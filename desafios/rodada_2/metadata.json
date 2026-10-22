@@ -1,0 +1,26 @@
+{
+  "rodada": 2,
+  "fase": 2,
+  "orcamento_bits": 24,
+  "custo_bits": 23.5,
+  "orcamento_usado_percent": 97.92,
+  "cifras_ordem": [
+    "vigenere"
+  ],
+  "cifras_detalhe": "vigenere(qywxz)",
+  "chaves": {
+    "vigenere": "qywxz"
+  },
+  "chaves_formato_simples_py": "qywxz",
+  "termina_em_xor": false,
+  "texto_claro": "oinstrutordewindsurfeomestredekarateorganizaramumfestivalcomboxejudoskaterapeleyogaoquiosquevendiawaffleyakisobaeketchupenquantooxilofoneeosaxofoneanimavamopubliconofimokayakvirouatracaoeozumbiganhouumkiwi",
+  "texto_claro_legivel": "O instrutor de windsurf e o mestre de karate organizaram um festival com boxe, judo, skate, rapel e yoga. O quiosque vendia waffle, yakisoba e ketchup, enquanto o xilofone e o saxofone animavam o publico. No fim, o kayak virou atracao e o zumbi ganhou um kiwi.",
+  "comprimento_texto_claro": 205,
+  "texto_cifrado_arquivo": "texto_cifrado.txt",
+  "texto_cifrado_hex_arquivo": "texto_cifrado_hex.txt",
+  "texto_cifrado_bytes_utf8": 205,
+  "formato_texto_cifrado": "Texto em letras minusculas de a-z, sem quebra de linha no final.",
+  "sha256_texto_claro_ascii": "9dc1cce84153c592798ee8d78f9cce2391f58b98f608b563ad3f9a8626bea752",
+  "sha256_bytes_cifrados": "6d22d4f551c713c738c10733420fc5ab9ede7159b74c896a74d3f36af61e3cb5",
+  "sha256_arquivo_cifrado": "6d22d4f551c713c738c10733420fc5ab9ede7159b74c896a74d3f36af61e3cb5"
+}

@@ -1,0 +1,19 @@
+RODADA 1 - FASE 1
+=================
+
+Cifras (ordem de aplicacao): vigenere
+Cifras em detalhe: vigenere(zxk)
+Chaves (ordem, formato do simples.py): zxk
+
+Vigenere: zxk (3 letras, 14.1 bits)
+
+Custo total: 14.1 / 16 bits
+Comprimento do texto claro: 208 letras
+
+Comando para decifrar com o simples.py:
+  python3 ../../simples.py decifrar texto_cifrado.txt vigenere zxk
+
+Comando para validar com o simples.py:
+  python3 ../../simples.py validar 1 texto_claro.txt texto_cifrado.txt vigenere zxk
+
+ATENCAO: este arquivo e o gabarito. Nao publique.

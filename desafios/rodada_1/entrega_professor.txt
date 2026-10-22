@@ -1,0 +1,16 @@
+ENTREGA AO PROFESSOR - RODADA 1 / FASE 1
+========================================
+
+Texto claro (somente a-z, 208 letras):
+ozeladordozoologicoachouumkiwiexoticonacaixadexadrezchamouocoordenadordoshowdejazzqueesperavanotaxijuntosfizeramumwafflecomyakisobaeumfestivalparaazebraopublicoaplaudiumasoventofezumziguezagueederrubouocartaz
+
+Cifras na ordem de aplicacao: vigenere
+Chaves na ordem: zxk
+Custo: 14.1 / 16 bits
+
+Texto cifrado: anexo texto_cifrado.txt
+Formato: Texto em letras minusculas de a-z, sem quebra de linha no final.
+SHA-256 do arquivo texto_cifrado.txt: cdbbaeeb3caf54cb7aaa3b573dcf1303a391e96093f6f8fea24beb27c4e0c995
+
+Declaracao: o texto cifrado foi gerado aplicando as cifras acima, na
+ordem indicada, ao texto claro acima, com as chaves acima.

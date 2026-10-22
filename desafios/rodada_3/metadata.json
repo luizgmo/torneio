@@ -1,0 +1,28 @@
+{
+  "rodada": 3,
+  "fase": 3,
+  "orcamento_bits": 32,
+  "custo_bits": 31.5,
+  "orcamento_usado_percent": 98.44,
+  "cifras_ordem": [
+    "vigenere",
+    "xor"
+  ],
+  "cifras_detalhe": "vigenere(kwyzx) -> xor(9b)",
+  "chaves": {
+    "vigenere": "kwyzx",
+    "xor": "9b"
+  },
+  "chaves_formato_simples_py": "kwyzx,9b",
+  "termina_em_xor": true,
+  "texto_claro": "naaulademusicaoprofessorfaloudojazzdorockdofunkdosouldobluesdoreggaeedokpopdepoismostrouoxilofoneosaxofoneeotecladoeexplicoucomoosambaoforroofrevoomaracatueoxoteanimamopubliconofimaturmafezumshowcombanjoukuleleecavaquinho",
+  "texto_claro_legivel": "Na aula de musica, o professor falou do jazz, do rock, do funk, do soul, do blues, do reggae e do k-pop. Depois mostrou o xilofone, o saxofone e o teclado, e explicou como o samba, o forro, o frevo, o maracatu e o xote animam o publico. No fim, a turma fez um show com banjo, ukulele e cavaquinho.",
+  "comprimento_texto_claro": 221,
+  "texto_cifrado_arquivo": "texto_cifrado.txt",
+  "texto_cifrado_hex_arquivo": "texto_cifrado_hex.txt",
+  "texto_cifrado_bytes_utf8": 442,
+  "formato_texto_cifrado": "UTF-8; cada caractere representa um byte 0..255 do resultado. Ler o arquivo inteiro como bytes, sem remover quebras de linha.",
+  "sha256_texto_claro_ascii": "f0187384fd97ed8bd6f757e8db1e6afbb00adfcf537ea260b817ac1a6685b8cf",
+  "sha256_bytes_cifrados": "53bff3d62b6a531037f6756c50bbab2bc1c5d90d427417603a91c29ed84721ca",
+  "sha256_arquivo_cifrado": "44ba3cdfa472998be6175686eaa3157d25642b806c5a9f9ba98524ac07f7be2d"
+}

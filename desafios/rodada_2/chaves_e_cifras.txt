@@ -1,0 +1,19 @@
+RODADA 2 - FASE 2
+=================
+
+Cifras (ordem de aplicacao): vigenere
+Cifras em detalhe: vigenere(qywxz)
+Chaves (ordem, formato do simples.py): qywxz
+
+Vigenere: qywxz (5 letras, 23.5 bits)
+
+Custo total: 23.5 / 24 bits
+Comprimento do texto claro: 205 letras
+
+Comando para decifrar com o simples.py:
+  python3 ../../simples.py decifrar texto_cifrado.txt vigenere qywxz
+
+Comando para validar com o simples.py:
+  python3 ../../simples.py validar 2 texto_claro.txt texto_cifrado.txt vigenere qywxz
+
+ATENCAO: este arquivo e o gabarito. Nao publique.

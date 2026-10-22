@@ -1,0 +1,20 @@
+RODADA 3 - FASE 3
+=================
+
+Cifras (ordem de aplicacao): vigenere,xor
+Cifras em detalhe: vigenere(kwyzx) -> xor(9b)
+Chaves (ordem, formato do simples.py): kwyzx,9b
+
+Vigenere: kwyzx (5 letras, 23.5 bits)
+XOR: 9b (1 byte(s), 8 bits)
+
+Custo total: 31.5 / 32 bits
+Comprimento do texto claro: 221 letras
+
+Comando para decifrar com o simples.py:
+  python3 ../../simples.py decifrar texto_cifrado.txt "vigenere,xor" "kwyzx,9b"
+
+Comando para validar com o simples.py:
+  python3 ../../simples.py validar 3 texto_claro.txt texto_cifrado.txt "vigenere,xor" "kwyzx,9b"
+
+ATENCAO: este arquivo e o gabarito. Nao publique.

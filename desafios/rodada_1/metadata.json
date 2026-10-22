@@ -1,0 +1,26 @@
+{
+  "rodada": 1,
+  "fase": 1,
+  "orcamento_bits": 16,
+  "custo_bits": 14.1,
+  "orcamento_usado_percent": 88.13,
+  "cifras_ordem": [
+    "vigenere"
+  ],
+  "cifras_detalhe": "vigenere(zxk)",
+  "chaves": {
+    "vigenere": "zxk"
+  },
+  "chaves_formato_simples_py": "zxk",
+  "termina_em_xor": false,
+  "texto_claro": "ozeladordozoologicoachouumkiwiexoticonacaixadexadrezchamouocoordenadordoshowdejazzqueesperavanotaxijuntosfizeramumwafflecomyakisobaeumfestivalparaazebraopublicoaplaudiumasoventofezumziguezagueederrubouocartaz",
+  "texto_claro_legivel": "O zelador do zoologico achou um kiwi exotico na caixa de xadrez. Chamou o coordenador do show de jazz, que esperava no taxi. Juntos fizeram um waffle com yakisoba e um festival para a zebra. O publico aplaudiu, mas o vento fez um ziguezague e derrubou o cartaz.",
+  "comprimento_texto_claro": 208,
+  "texto_cifrado_arquivo": "texto_cifrado.txt",
+  "texto_cifrado_hex_arquivo": "texto_cifrado_hex.txt",
+  "texto_cifrado_bytes_utf8": 208,
+  "formato_texto_cifrado": "Texto em letras minusculas de a-z, sem quebra de linha no final.",
+  "sha256_texto_claro_ascii": "a9413c8d66f67b26010fced867ea5bd3e01cbdb32afe57702bf0f200f8ea7e2e",
+  "sha256_bytes_cifrados": "cdbbaeeb3caf54cb7aaa3b573dcf1303a391e96093f6f8fea24beb27c4e0c995",
+  "sha256_arquivo_cifrado": "cdbbaeeb3caf54cb7aaa3b573dcf1303a391e96093f6f8fea24beb27c4e0c995"
+}

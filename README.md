@@ -99,7 +99,7 @@ python3 simples.py atacar 4 desafio.txt
 Saída esperada:
 
 ```text
-#1 nota -2.67 | 30.1 bits | vigenere(arq) -> xor(0a1b)
+#1 nota -2.16 | 30.1 bits | vigenere(arq) -> xor(0a1b)
 hojeacordeicedoefuicaminharnoparque...
 ```
 
@@ -115,25 +115,45 @@ O ataque funciona para:
 - uma cifra (Atbash, César, Vigenère, XOR e XOR de 2 bits);
 - duas cifras nas fases 3 e 4, incluindo XOR por último.
 
-Ele aprende as frequências das letras e os pedaços comuns de palavras a partir
-do arquivo `portugues.txt`. Depois usa a restrição de que o texto claro tem só
-letras `a-z`. Não é força bruta cega: normalmente roda em menos de alguns
-segundos, mas combinações das fases 3 e 4 podem chegar a uns 10 segundos.
+Ele aprende um modelo de língua de 4-gramas a partir do arquivo
+`portugues.txt` e usa a restrição de que o texto claro tem só letras `a-z`.
+Para achar Vigenère e XOR, testa as chaves coluna a coluna, refina as melhores
+e só então compara os candidatos pelo modelo completo. Não é força bruta cega:
+os casos comuns rodam em menos de um segundo e as combinações mais difíceis
+das fases 3 e 4 ficam em poucos segundos.
 
-**Importante:** o ataque é treinado em português. Os exemplos
-`caesar_criptografado.txt` e `crypt_vigenere.txt` do professor estão em inglês;
-o César ainda é encontrado, mas o Vigenère pode não ser. Para esses arquivos,
-use `decifrar` com a chave conhecida:
+Os exemplos `atbash_criptografado.txt`, `caesar_criptografado.txt`,
+`crypt_vigenere.txt` e `xor_criptografado.txt` do professor estão em inglês.
+Além do modelo de português, o ataque tem um modelo simples de frequências do
+inglês e escolhe sozinho a leitura que parece melhor, então também acerta
+esses quatro arquivos:
 
 ```bash
-python3 simples.py decifrar crypt_vigenere.txt vigenere arq
+python3 simples.py atacar 1 crypt_vigenere.txt
+#1 ... | vigenere(arq)
 ```
 
-Um texto de referência maior ajuda até certo ponto: as frequências das letras
-já ficam estáveis com poucos milhares de letras. O `portugues.txt` atual tem
-cerca de 57 KB, o que é mais do que suficiente. Não vale a pena misturar inglês
-com português no mesmo arquivo: isso pode piorar os resultados em português.
-Para o torneio, o importante é o texto de referência ser em português.
+Um texto de referência maior ajuda até certo ponto: os 4-gramas já ficam
+estáveis com algumas dezenas de milhares de letras. O `portugues.txt` atual
+tem cerca de 57 KB, o que é suficiente. Para o torneio, o importante é o texto
+de referência ser em português; misturar inglês com português pode piorar os
+resultados.
+
+## Testar o ataque
+
+```bash
+python3 testar_ataque.py
+```
+
+A bateria testa todas as cifras e combinações válidas das fases 1 a 4, chaves
+XOR com bytes baixos ou zero, as rodadas atuais em `desafios/` e os exemplos do
+professor. Leva de 1 a 2 minutos; o argumento opcional muda quantos textos são
+usados por combinação:
+
+```bash
+python3 testar_ataque.py 1   # mais rápido
+python3 testar_ataque.py 5   # mais completo
+```
 
 ## Chaves
 
@@ -160,13 +180,14 @@ Use aspas quando houver vírgula: `"vigenere,xor"` e `"arq,dd"`.
 
 - `data.txt` — texto claro de exemplo (em inglês).
 - `exemplo.txt` — texto claro de exemplo em português, com 230 letras.
-- `portugues.txt` — texto em português usado para o ataque aprender as
-  frequências e os pedaços comuns de palavras. Tem cerca de 57 KB: o
+- `portugues.txt` — texto em português usado para o ataque aprender os
+  4-gramas e as diferenças entre letras. Tem cerca de 57 KB: o
   regulamento mais um trecho de *Dom Casmurro* (Machado de Assis, domínio
   público). Pode ser trocado por outro texto em português, sem acentos ou com
   acentos (o programa remove os acentos).
 - `atbash_criptografado.txt`, `caesar_criptografado.txt`,
   `crypt_vigenere.txt`, `xor_criptografado.txt` — desafios de exemplo.
+- `testar_ataque.py` — bateria que confere o ataque em todas as combinações.
 - `keys` — chaves dos exemplos.
 - `Torneio de Criptografia Regulamento.pdf` — regulamento.
 

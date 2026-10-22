@@ -1,0 +1,20 @@
+RODADA 4 - FASE 4
+=================
+
+Cifras (ordem de aplicacao): vigenere,xor
+Cifras em detalhe: vigenere(zxkwy) -> xor(b3e7)
+Chaves (ordem, formato do simples.py): zxkwy,b3e7
+
+Vigenere: zxkwy (5 letras, 23.5 bits)
+XOR: b3 e7 (2 byte(s), 16 bits)
+
+Custo total: 39.5 / 40 bits
+Comprimento do texto claro: 200 letras
+
+Comando para decifrar com o simples.py:
+  python3 ../../simples.py decifrar texto_cifrado.txt "vigenere,xor" "zxkwy,b3e7"
+
+Comando para validar com o simples.py:
+  python3 ../../simples.py validar 4 texto_claro.txt texto_cifrado.txt "vigenere,xor" "zxkwy,b3e7"
+
+ATENCAO: este arquivo e o gabarito. Nao publique.

@@ -1,0 +1,16 @@
+ENTREGA AO PROFESSOR - RODADA 4 / FASE 4
+========================================
+
+Texto claro (somente a-z, 200 letras):
+emquiotocompreiumquimonoeumxilofoneeemxangaiproveiyakisobacomketchupdepoisseguiparawellingtonondeviumshowdejazzeumjogodeboxeeparazanzibarondealugueiumkayakeumwindsurfvolteiparakansascomumkiwieumwhisky
+
+Cifras na ordem de aplicacao: vigenere,xor
+Chaves na ordem: zxkwy,b3e7
+Custo: 39.5 / 40 bits
+
+Texto cifrado: anexo texto_cifrado.txt
+Formato: UTF-8; cada caractere representa um byte 0..255 do resultado. Ler o arquivo inteiro como bytes, sem remover quebras de linha.
+SHA-256 do arquivo texto_cifrado.txt: b84293523ce96a0f7c8af94d6b2b30ece26f9c253b7ede75841741070da0dde5
+
+Declaracao: o texto cifrado foi gerado aplicando as cifras acima, na
+ordem indicada, ao texto claro acima, com as chaves acima.

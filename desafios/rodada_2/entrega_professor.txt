@@ -1,0 +1,16 @@
+ENTREGA AO PROFESSOR - RODADA 2 / FASE 2
+========================================
+
+Texto claro (somente a-z, 205 letras):
+oinstrutordewindsurfeomestredekarateorganizaramumfestivalcomboxejudoskaterapeleyogaoquiosquevendiawaffleyakisobaeketchupenquantooxilofoneeosaxofoneanimavamopubliconofimokayakvirouatracaoeozumbiganhouumkiwi
+
+Cifras na ordem de aplicacao: vigenere
+Chaves na ordem: qywxz
+Custo: 23.5 / 24 bits
+
+Texto cifrado: anexo texto_cifrado.txt
+Formato: Texto em letras minusculas de a-z, sem quebra de linha no final.
+SHA-256 do arquivo texto_cifrado.txt: 6d22d4f551c713c738c10733420fc5ab9ede7159b74c896a74d3f36af61e3cb5
+
+Declaracao: o texto cifrado foi gerado aplicando as cifras acima, na
+ordem indicada, ao texto claro acima, com as chaves acima.

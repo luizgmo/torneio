@@ -1,0 +1,16 @@
+ENTREGA AO PROFESSOR - RODADA 3 / FASE 3
+========================================
+
+Texto claro (somente a-z, 221 letras):
+naaulademusicaoprofessorfaloudojazzdorockdofunkdosouldobluesdoreggaeedokpopdepoismostrouoxilofoneosaxofoneeotecladoeexplicoucomoosambaoforroofrevoomaracatueoxoteanimamopubliconofimaturmafezumshowcombanjoukuleleecavaquinho
+
+Cifras na ordem de aplicacao: vigenere,xor
+Chaves na ordem: kwyzx,9b
+Custo: 31.5 / 32 bits
+
+Texto cifrado: anexo texto_cifrado.txt
+Formato: UTF-8; cada caractere representa um byte 0..255 do resultado. Ler o arquivo inteiro como bytes, sem remover quebras de linha.
+SHA-256 do arquivo texto_cifrado.txt: 44ba3cdfa472998be6175686eaa3157d25642b806c5a9f9ba98524ac07f7be2d
+
+Declaracao: o texto cifrado foi gerado aplicando as cifras acima, na
+ordem indicada, ao texto claro acima, com as chaves acima.

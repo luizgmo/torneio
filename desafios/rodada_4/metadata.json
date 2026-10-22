@@ -1,0 +1,28 @@
+{
+  "rodada": 4,
+  "fase": 4,
+  "orcamento_bits": 40,
+  "custo_bits": 39.5,
+  "orcamento_usado_percent": 98.75,
+  "cifras_ordem": [
+    "vigenere",
+    "xor"
+  ],
+  "cifras_detalhe": "vigenere(zxkwy) -> xor(b3e7)",
+  "chaves": {
+    "vigenere": "zxkwy",
+    "xor": "b3e7"
+  },
+  "chaves_formato_simples_py": "zxkwy,b3e7",
+  "termina_em_xor": true,
+  "texto_claro": "emquiotocompreiumquimonoeumxilofoneeemxangaiproveiyakisobacomketchupdepoisseguiparawellingtonondeviumshowdejazzeumjogodeboxeeparazanzibarondealugueiumkayakeumwindsurfvolteiparakansascomumkiwieumwhisky",
+  "texto_claro_legivel": "Em Quioto comprei um quimono e um xilofone, e em Xangai provei yakisoba com ketchup. Depois segui para Wellington, onde vi um show de jazz e um jogo de boxe, e para Zanzibar, onde aluguei um kayak e um windsurf. Voltei para Kansas com um kiwi e um whisky.",
+  "comprimento_texto_claro": 200,
+  "texto_cifrado_arquivo": "texto_cifrado.txt",
+  "texto_cifrado_hex_arquivo": "texto_cifrado_hex.txt",
+  "texto_cifrado_bytes_utf8": 400,
+  "formato_texto_cifrado": "UTF-8; cada caractere representa um byte 0..255 do resultado. Ler o arquivo inteiro como bytes, sem remover quebras de linha.",
+  "sha256_texto_claro_ascii": "2102cbcd4c6a292fe5bb888de661c18ffe80c0f5783c9d9e6a20e91e16243960",
+  "sha256_bytes_cifrados": "6b552c222104260623483669533b5f7ff1dfc14d9c34b8acce3b6fdea97b988d",
+  "sha256_arquivo_cifrado": "b84293523ce96a0f7c8af94d6b2b30ece26f9c253b7ede75841741070da0dde5"
+}
