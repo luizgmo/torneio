@@ -10,33 +10,51 @@ Chaves: atbash=-  cesar=3  vigenere=arq  xor=dd (hex)  xor2=2
 
 import itertools
 import math
+import re
 import sys
+import unicodedata
 from pathlib import Path
 
 ORCAMENTO = {1: 16, 2: 24, 3: 32, 4: 40}
-
-# Frequências das letras (%), em português e inglês.
-PT = (14.63, 1.04, 3.88, 4.99, 12.57, 1.02, 1.30, 1.28, 6.18, 0.40, 0.02,
-      2.78, 4.74, 5.05, 10.73, 2.52, 1.20, 6.53, 7.81, 4.34, 4.63, 1.67,
-      0.01, 0.21, 0.01, 0.47)
-EN = (8.17, 1.49, 2.78, 4.25, 12.70, 2.23, 2.02, 6.09, 6.97, 0.15, 0.77,
-      4.03, 2.41, 6.75, 7.51, 1.93, 0.10, 5.99, 6.33, 9.06, 2.76, 0.98,
-      2.36, 0.15, 1.97, 0.07)
-LOG_PT = [math.log(f / 100) for f in PT]
-LOG_EN = [math.log(f / 100) for f in EN]
-
-# Pedaços comuns de palavras, para diferenciar texto de verdade de lixo.
-DOIS = set(b"de os as ar er ra es do da co ca po qu ue en te re se al nt st ta "
-           b"to ad or ma me mo na no pr tr ir ou em am om um th he in an on at "
-           b"nd ti of ed is it ng ha le ve ri ro ic ne ea ce li ch be si ur el "
-           b"la ns di fo pe ec ct us ac il ly un".split())
-TRES = set(b"que ent ara com est ado par men con nte ida dos das res sta cao oes "
-           b"ica ico ura pro pre tra tri mos ram ssa sso ade the and ing her tha "
-           b"int ere tio ter ers ati hat ate all ver his ont ion".split())
+BASE = Path(__file__).resolve().parent
 
 
 def letra(b):
     return 97 <= b <= 122
+
+
+def aprender(caminho):
+    """Aprende as letras e os pedaços mais comuns de um texto em português."""
+    bruto = Path(caminho).read_bytes()
+    texto = unicodedata.normalize("NFKD", bruto.decode("utf-8", "ignore"))
+    texto = texto.encode("ascii", "ignore").lower()
+    palavras = re.findall(rb"[a-z]+", texto)
+    letras = b"".join(palavras)
+
+    cont = [0] * 26
+    for b in letras:
+        cont[b - 97] += 1
+    total = sum(cont)
+    # soma 0,5 em cada letra para nenhuma ficar com frequência zero
+    freq = [100 * (c + 0.5) / (total + 13) for c in cont]
+
+    def comuns(n, qtd):
+        conta = {}
+        for palavra in palavras:
+            for i in range(len(palavra) - n + 1):
+                pedaco = palavra[i:i + n]
+                conta[pedaco] = conta.get(pedaco, 0) + 1
+        return set(sorted(conta, key=conta.get, reverse=True)[:qtd])
+
+    return freq, comuns(2, 80), comuns(3, 60)
+
+
+try:
+    PT, DOIS, TRES = aprender(BASE / "portugues.txt")
+except FileNotFoundError:
+    sys.exit("Falta o arquivo portugues.txt na mesma pasta do simples.py")
+
+LOG_PT = [math.log(f / 100) for f in PT]
 
 
 def atbash(t):
@@ -150,34 +168,51 @@ def passos(cifras, chaves):
 
 
 def nota(t):
-    """Dá uma nota para o texto: quanto maior, mais parece português/inglês."""
+    """Dá uma nota para o texto: quanto maior, mais parece português."""
     t = t.rstrip(b"\r\n")
     if not t:
         return -1e9
     n = len(t)
-    sp = se = 0.0
+    pontos = 0.0
     ruins = 0
     for b in t:
         if letra(b):
-            sp += LOG_PT[b - 97]
-            se += LOG_EN[b - 97]
+            pontos += LOG_PT[b - 97]
         else:
             ruins += 1
     bonus = sum(0.06 for i in range(n - 1) if t[i:i + 2] in DOIS)
     bonus += sum(0.12 for i in range(n - 2) if t[i:i + 3] in TRES)
-    return max(sp, se) / n - 2 * ruins + bonus / n
+    return pontos / n - 2 * ruins + bonus / n
+
+
+def chi(t):
+    """Compara as letras de t com as frequências aprendidas do português."""
+    cont = [0] * 26
+    n = 0
+    for b in t:
+        if letra(b):
+            cont[b - 97] += 1
+            n += 1
+    if not n:
+        return 1e9
+    total = 0.0
+    for i in range(26):
+        esperado = PT[i] * n / 100
+        total += (cont[i] - esperado) ** 2 / esperado
+    return total
 
 
 def vigenere_candidatos(t, maxm):
     """Testa chaves de 1 até maxm letras.
 
     Para cada tamanho, escolhe em cada coluna o deslocamento que deixa
-    aquela coluna com cara de português. É a análise de frequência clássica.
+    aquela coluna com a distribuição de letras mais parecida com o português.
+    É a análise de frequência clássica.
     """
     out = []
     for m in range(1, maxm + 1):
         chave = bytes(
-            97 + max(range(26), key=lambda s: nota(cesar(t[j::m], -s)))
+            97 + min(range(26), key=lambda s: chi(cesar(t[j::m], -s)))
             for j in range(m)
         )
         p = vigenere(t, chave, True)

@@ -85,14 +85,28 @@ Exemplos:
 
 ```bash
 python3 simples.py atacar 1 caesar_criptografado.txt
-python3 simples.py atacar 1 crypt_vigenere.txt
+python3 simples.py atacar 1 xor_criptografado.txt
 python3 simples.py atacar 4 desafio.txt 5
+```
+
+Para testar um desafio em português, use o `exemplo.txt`:
+
+```bash
+python3 simples.py cifrar 4 exemplo.txt desafio.txt "vigenere,xor" "arq,0a1b"
+python3 simples.py atacar 4 desafio.txt
+```
+
+Saída esperada:
+
+```text
+#1 nota -2.67 | 30.1 bits | vigenere(arq) -> xor(0a1b)
+hojeacordeicedoefuicaminharnoparque...
 ```
 
 Ele mostra os candidatos ordenados por nota, com as cifras e chaves encontradas:
 
 ```text
-#1 nota -3.04 | 4.70 bits | cesar(3)
+#1 nota -3.35 | 4.7 bits | cesar(3)
 thequickbrownfoxjumpsoverthelazydog...
 ```
 
@@ -101,9 +115,25 @@ O ataque funciona para:
 - uma cifra (Atbash, César, Vigenère, XOR e XOR de 2 bits);
 - duas cifras nas fases 3 e 4, incluindo XOR por último.
 
-Ele usa frequência de letras, pedaços comuns de palavras e a restrição de que o
-texto claro tem só letras `a-z`. Não é força bruta cega, então roda em menos de
-alguns segundos.
+Ele aprende as frequências das letras e os pedaços comuns de palavras a partir
+do arquivo `portugues.txt`. Depois usa a restrição de que o texto claro tem só
+letras `a-z`. Não é força bruta cega: normalmente roda em menos de alguns
+segundos, mas combinações das fases 3 e 4 podem chegar a uns 10 segundos.
+
+**Importante:** o ataque é treinado em português. Os exemplos
+`caesar_criptografado.txt` e `crypt_vigenere.txt` do professor estão em inglês;
+o César ainda é encontrado, mas o Vigenère pode não ser. Para esses arquivos,
+use `decifrar` com a chave conhecida:
+
+```bash
+python3 simples.py decifrar crypt_vigenere.txt vigenere arq
+```
+
+Um texto de referência maior ajuda até certo ponto: as frequências das letras
+já ficam estáveis com poucos milhares de letras. O `portugues.txt` atual tem
+cerca de 57 KB, o que é mais do que suficiente. Não vale a pena misturar inglês
+com português no mesmo arquivo: isso pode piorar os resultados em português.
+Para o torneio, o importante é o texto de referência ser em português.
 
 ## Chaves
 
@@ -128,7 +158,13 @@ Use aspas quando houver vírgula: `"vigenere,xor"` e `"arq,dd"`.
 
 ## Arquivos de exemplo
 
-- `data.txt` — texto claro de exemplo.
+- `data.txt` — texto claro de exemplo (em inglês).
+- `exemplo.txt` — texto claro de exemplo em português, com 230 letras.
+- `portugues.txt` — texto em português usado para o ataque aprender as
+  frequências e os pedaços comuns de palavras. Tem cerca de 57 KB: o
+  regulamento mais um trecho de *Dom Casmurro* (Machado de Assis, domínio
+  público). Pode ser trocado por outro texto em português, sem acentos ou com
+  acentos (o programa remove os acentos).
 - `atbash_criptografado.txt`, `caesar_criptografado.txt`,
   `crypt_vigenere.txt`, `xor_criptografado.txt` — desafios de exemplo.
 - `keys` — chaves dos exemplos.
